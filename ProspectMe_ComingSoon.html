@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ProspectMe — BE SEEN.GET RECRUITED.</title>
+<meta name="description" content="ProspectMe automates your high school athlete's recruiting social media presence. Share highlights, tag coaches, and get noticed — automatically.">
+<link rel="canonical" href="https://prospectme.app">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://prospectme.app">
+<meta property="og:title" content="ProspectMe — BE SEEN.GET RECRUITED.">
+<meta property="og:description" content="ProspectMe automates your high school athlete's recruiting social media presence. Share highlights, tag coaches, and get noticed — automatically.">
+<meta property="og:image" content="https://prospectme.app/assets/og-card.png">
+<meta property="og:image:width" content="1080"><meta property="og:image:height" content="1080">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ProspectMe — BE SEEN.GET RECRUITED.">
+<meta name="twitter:description" content="ProspectMe automates your high school athlete's recruiting social media presence.">
+<meta name="twitter:image" content="https://prospectme.app/assets/og-card.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:#0B1320; --panel:#0F1A2C; --line:#1E2C44;
+  --orange:#FF6A00; --blue:#2563FF; --ink:#FFFFFF; --muted:#9FB0C8;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { background:var(--navy); color:var(--ink); font-family:'Sora',system-ui,sans-serif; line-height:1.6;
+  background-image:radial-gradient(900px 600px at 8% -5%, rgba(255,106,0,.10), transparent 60%),
+                   radial-gradient(900px 600px at 100% 0%, rgba(37,99,255,.10), transparent 60%); }
+.wrap { max-width:1060px; margin:0 auto; padding:0 24px; }
+a { color:var(--blue); text-decoration:none; }
+a:focus-visible,button:focus-visible,input:focus-visible { outline:3px solid var(--orange); outline-offset:2px; border-radius:6px; }
+
+/* ---------- HERO: viewfinder locks focus ---------- */
+.hero { position:relative; padding:88px 0 72px; text-align:center; }
+.vf { position:absolute; inset:26px 12px auto 12px; height:calc(100% - 44px); pointer-events:none; }
+.vf span { position:absolute; width:64px; height:64px; border:5px solid var(--orange); border-radius:14px; opacity:.9; }
+.vf .tl { top:0; left:0; border-right:none; border-bottom:none; }
+.vf .tr { top:0; right:0; border-left:none; border-bottom:none; border-color:var(--blue); }
+.vf .bl { bottom:0; left:0; border-right:none; border-top:none; border-color:var(--blue); }
+.vf .br { bottom:0; right:0; border-left:none; border-top:none; }
+@media (prefers-reduced-motion:no-preference) {
+  .vf span { animation:lock .9s cubic-bezier(.2,.8,.2,1) both; }
+  .vf .tl { --dx:-28px; --dy:-28px; } .vf .tr { --dx:28px; --dy:-28px; }
+  .vf .bl { --dx:-28px; --dy:28px; } .vf .br { --dx:28px; --dy:28px; }
+  @keyframes lock { from { transform:translate(var(--dx),var(--dy)); opacity:0; } to { transform:none; opacity:.9; } }
+  .hero-inner { animation:focusIn 1s .15s cubic-bezier(.2,.8,.2,1) both; }
+  @keyframes focusIn { from { opacity:0; transform:scale(.97); filter:blur(3px); } to { opacity:1; transform:none; filter:none; } }
+}
+.lockup { display:flex; align-items:center; justify-content:center; gap:26px; margin-bottom:30px; }
+.mark { width:132px; height:132px; }
+.wordmark { width:min(430px,72vw); height:auto; }
+@media (max-width:640px) { .lockup { flex-direction:column; gap:14px; } .mark { width:150px; height:150px; } }
+.tagline { font-weight:800; font-size:clamp(1.7rem,5.4vw,3.1rem); letter-spacing:.04em; }
+.tagline .o { color:var(--orange); }
+.sub { color:var(--muted); font-size:clamp(1rem,2.4vw,1.25rem); max-width:640px; margin:18px auto 34px; }
+.cta-row { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+.btn { display:inline-block; font-family:inherit; font-weight:700; font-size:1.05rem; padding:15px 34px; border-radius:12px; cursor:pointer; transition:transform .15s ease, box-shadow .15s ease; }
+.btn:hover { transform:translateY(-2px); }
+.btn-solid { background:var(--orange); color:#fff; border:2px solid var(--orange); box-shadow:0 8px 26px rgba(255,106,0,.28); }
+.btn-ghost { background:transparent; color:var(--orange); border:2px solid var(--orange); }
+
+/* ---------- proof bar ---------- */
+.proof { border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:rgba(15,26,44,.55); }
+.proof .wrap { display:flex; gap:14px 40px; justify-content:center; flex-wrap:wrap; padding:18px 24px; color:var(--muted); font-size:.95rem; font-weight:600; }
+.proof .dot { color:var(--orange); margin-right:9px; }
+
+/* ---------- sections ---------- */
+section { padding:84px 0; }
+.eyebrow { display:inline-flex; align-items:center; gap:10px; color:var(--orange); font-weight:700; font-size:.85rem; letter-spacing:.16em; text-transform:uppercase; margin-bottom:14px; }
+.eyebrow::before,.eyebrow::after { content:''; width:16px; height:16px; border:3px solid currentColor; }
+.eyebrow::before { border-right:none; border-bottom:none; }
+.eyebrow::after { border-left:none; border-top:none; }
+h2 { font-size:clamp(1.6rem,4vw,2.3rem); font-weight:800; line-height:1.25; }
+.features { display:grid; grid-template-columns:repeat(3,1fr); gap:26px; margin-top:44px; }
+@media (max-width:820px) { .features { grid-template-columns:1fr; } }
+.card { background:var(--panel); border:1px solid var(--line); border-radius:18px; padding:34px 28px; }
+.card svg { width:44px; height:44px; margin-bottom:18px; }
+.card h3 { font-size:1.2rem; font-weight:700; margin-bottom:10px; }
+.card p { color:var(--muted); font-size:.98rem; }
+
+/* founder */
+.founder { background:var(--panel); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+.founder .wrap { max-width:760px; text-align:center; }
+.founder p { color:var(--muted); font-size:clamp(1.05rem,2.4vw,1.25rem); margin-top:20px; line-height:1.75; }
+.founder strong { color:var(--ink); }
+
+/* waitlist */
+.waitlist .panel { position:relative; background:var(--panel); border:1px solid var(--line); border-radius:22px; padding:56px 34px; text-align:center; max-width:720px; margin:0 auto; }
+.corner { position:absolute; width:40px; height:40px; border:4px solid var(--orange); border-radius:10px; }
+.c-tl { top:-4px; left:-4px; border-right:none; border-bottom:none; }
+.c-br { bottom:-4px; right:-4px; border-left:none; border-top:none; border-color:var(--blue); }
+.waitlist p.subtext { color:var(--muted); margin:14px 0 30px; }
+.form-row { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+input[type=email] { font-family:inherit; font-size:1rem; padding:15px 18px; border-radius:12px; border:1px solid var(--line); background:var(--navy); color:var(--ink); width:min(340px,100%); }
+input[type=email]::placeholder { color:#5A6B85; }
+.fine { color:var(--muted); font-size:.85rem; margin-top:18px; }
+
+/* footer + privacy */
+footer { border-top:1px solid var(--line); padding:44px 0 26px; color:var(--muted); font-size:.92rem; }
+footer .row { display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; align-items:center; }
+footer .social a { color:var(--muted); margin-left:18px; }
+footer .social a:hover { color:var(--ink); }
+.privacy { margin-top:34px; border-top:1px solid var(--line); padding-top:26px; }
+.privacy summary { cursor:pointer; font-weight:700; color:var(--ink); }
+.privacy h4 { margin:18px 0 4px; color:var(--ink); font-size:.95rem; }
+.privacy p { margin-bottom:6px; max-width:70ch; }
+.terms-note { color:#5A6B85; }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="vf" aria-hidden="true"><span class="tl"></span><span class="tr"></span><span class="bl"></span><span class="br"></span></div>
+  <div class="wrap hero-inner">
+    <div class="lockup">
+      <svg xmlns="http://www.w3.org/2000/svg" class="mark" role="img" aria-label="ProspectMe logo" viewBox="0 0 1024 1024"><defs><linearGradient id="gO_t" gradientUnits="userSpaceOnUse" x1="0" y1="78" x2="0" y2="318">
+<stop offset="0" stop-color="#FF8D0F"/><stop offset="1" stop-color="#DD4200"/></linearGradient>
+<linearGradient id="gB_t" gradientUnits="userSpaceOnUse" x1="0" y1="78" x2="0" y2="318">
+<stop offset="0" stop-color="#039EF1"/><stop offset="1" stop-color="#0243EB"/></linearGradient>
+<linearGradient id="gO_b" gradientUnits="userSpaceOnUse" x1="0" y1="706" x2="0" y2="946">
+<stop offset="0" stop-color="#FF8D0F"/><stop offset="1" stop-color="#DD4200"/></linearGradient>
+<linearGradient id="gB_b" gradientUnits="userSpaceOnUse" x1="0" y1="706" x2="0" y2="946">
+<stop offset="0" stop-color="#039EF1"/><stop offset="1" stop-color="#0243EB"/></linearGradient><radialGradient id="glowM" gradientUnits="userSpaceOnUse" cx="625" cy="390" r="72">
+<stop offset="0" stop-color="#FFF5D4" stop-opacity="1"/><stop offset="0.13" stop-color="#FFD990" stop-opacity="1"/>
+<stop offset="0.24" stop-color="#FEA839" stop-opacity="1"/><stop offset="0.35" stop-color="#FF7F10" stop-opacity="0.9"/>
+<stop offset="0.50" stop-color="#FF6A00" stop-opacity="0.5"/><stop offset="0.65" stop-color="#FF6A00" stop-opacity="0.18"/>
+<stop offset="0.78" stop-color="#FF6A00" stop-opacity="0.04"/><stop offset="0.88" stop-color="#FF6A00" stop-opacity="0"/>
+<stop offset="1" stop-color="#FF6A00" stop-opacity="0"/></radialGradient>
+<radialGradient id="streakM" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#FFFFFF" stop-opacity="0.9"/>
+<stop offset="0.45" stop-color="#FFE0B0" stop-opacity="0.28"/><stop offset="0.8" stop-color="#FFFFFF" stop-opacity="0"/></radialGradient></defs><g id="brackets" fill="none" stroke-width="45" stroke-linecap="round">
+<path d="M 296 101 L 192 101 Q 114 101 114 188 L 114 296" stroke="url(#gO_t)"/>
+<path d="M 728 101 L 832 101 Q 910 101 910 188 L 910 296" stroke="url(#gB_t)"/>
+<path d="M 296 923 L 192 923 Q 114 923 114 836 L 114 728" stroke="url(#gB_b)"/>
+<path d="M 728 923 L 832 923 Q 910 923 910 836 L 910 728" stroke="url(#gO_b)"/></g><path fill="#FFFFFF" d="M342.31298828125 208.4739990234375C352.12908935546875 208.04100036621094 364.02777099609375 208.1719207763672 375.2969665527344 208.29591369628906C380.5284118652344 208.3534698486328 385.62420654296875 208.40953063964844 390.31298828125 208.40699768066406L485.99798583984375 208.41600036621094L552.7310180664062 208.43499755859375C555.3822631835938 208.43409729003906 558.2529296875 208.41058349609375 561.2413330078125 208.38609313964844C571.5661010742188 208.30149841308594 583.295166015625 208.2053985595703 592.2329711914062 208.99099731445312C643.4990234375 213.531005859375 690.8629760742188 238.24400329589844 723.9130249023438 277.6960144042969C769.2260131835938 331.77398681640625 786.56201171875 402.2659912109375 780.176025390625 471.75299072265625C774.2839965820312 542.3489990234375 740.56298828125 607.7039794921875 686.4429931640625 653.4149780273438C650.52001953125 682.8040161132812 606.8519897460938 701.155029296875 560.718994140625 706.2479858398438C546.9548950195312 707.6694946289062 533.3408813476562 707.605224609375 519.5859375 707.5402221679688L519.5672607421875 707.5401611328125C516.6365356445312 707.5263061523438 513.6994018554688 707.512451171875 510.75299072265625 707.5130004882812L483.9859924316406 707.6079711914062L483.59246826171875 707.6107177734375C472.0403137207031 707.6904907226562 466.5479736328125 707.7284545898438 465.6097717285156 705.6802978515625C464.75946044921875 703.8239135742188 467.65032958984375 700.2538452148438 473.16131591796875 693.4480590820312C474.0368957519531 692.3667602539062 474.9786376953125 691.2037963867188 475.98199462890625 689.9530029296875C499.4150085449219 660.7420043945312 515.5859985351562 627.0070190429688 522.0230102539062 590.0250244140625C524.0120239257812 575.18798828125 525.2009887695312 556.6710205078125 518.7169799804688 542.5889892578125C508.4549865722656 520.2990112304688 487.7510070800781 502.06201171875 471.83099365234375 483.6300048828125C470.8739929199219 482.5220031738281 469.9930114746094 481.135986328125 469.5299987792969 479.77899169921875C470.2950134277344 476.1830139160156 472.5249938964844 475.5429992675781 475.635009765625 477.0899963378906C503.6730041503906 491.0469970703125 531.5189819335938 506.0570068359375 559.6939697265625 519.7160034179688C567.4730224609375 515.4299926757812 574.0490112304688 510.2019958496094 580.9299926757812 504.81298828125C608.1270141601562 483.51300048828125 631.1959838867188 457.7850036621094 650.7899780273438 429.40899658203125C653.2420043945312 425.8580017089844 659.1649780273438 414.73199462890625 663.198974609375 414.0369873046875C667.344970703125 415.96490478515625 663.78759765625 425.42742919921875 661.845458984375 430.5933837890625C661.5048828125 431.49932861328125 661.2139892578125 432.2731628417969 661.0230102539062 432.85101318359375C650.3930053710938 464.9960021972656 634.4609985351562 495.072998046875 616.5 523.6719970703125C610.323974609375 533.5239868164062 603.64599609375 543.2139892578125 597.5250244140625 553.1079711914062C588.3300170898438 567.6630249023438 580.4229736328125 582.9920043945312 573.89501953125 598.9219970703125C570.5549926757812 607.4810180664062 567.8380126953125 616.27001953125 565.7630004882812 625.2210083007812C591.0269775390625 619.8090209960938 614.4879760742188 608.030029296875 633.9199829101562 591.0020141601562C700.5460205078125 532.7329711914062 719.260986328125 413.87200927734375 659.031005859375 344.6919860839844C638.0380249023438 320.5790100097656 606.1400146484375 303.15899658203125 573.8930053710938 302.2950134277344C552.971435546875 301.7347106933594 531.900146484375 301.8526611328125 510.8432922363281 301.9704895019531L510.83941650390625 301.97052001953125C495.5932922363281 302.0558776855469 480.354736328125 302.14117431640625 465.1860046386719 301.968994140625C459.18701171875 301.9010009765625 458.58599853515625 302.97601318359375 457.8059997558594 308.72100830078125C452.3580017089844 345.8039855957031 446.9419860839844 382.8999938964844 441.4309997558594 419.9750061035156L404.5459899902344 671.0390014648438C402.6369934082031 684.2349853515625 393.7720031738281 754.6719970703125 391.0069885253906 759.7589721679688C388.1549987792969 765.0070190429688 376.1759948730469 775.6699829101562 371.4129943847656 780.541015625L323.1440124511719 829.7869873046875C310.1789855957031 843.2890014648438 297.10400390625 856.6859741210938 283.9209899902344 869.9760131835938C277.2650146484375 876.791015625 270.781005859375 883.8099975585938 263.8269958496094 890.3209838867188C261.89801025390625 892.5579833984375 257.7340087890625 893.864013671875 255.88999938964844 890.677001953125C253.8667449951172 887.179443359375 255.24655151367188 878.9275512695312 256.1622314453125 873.4512329101562C256.36077880859375 872.2637329101562 256.53753662109375 871.2066650390625 256.65301513671875 870.3569946289062L260.18701171875 844.155029296875C263.4939880371094 819.1799926757812 266.6669921875 794.18701171875 269.7070007324219 769.177978515625L316.6650085449219 390.5119934082031L330.47100830078125 278.7250061035156L335.3760070800781 237.9929962158203C336.3529968261719 229.7050018310547 337.177001953125 220.55499267578125 338.47198486328125 212.3769989013672C339.68701171875 210.85899353027344 340.89898681640625 209.80099487304688 342.31298828125 208.4739990234375ZM559.4569702148438 398.0159912109375C581.2109985351562 396.0469970703125 600.4500122070312 412.0669860839844 602.4539794921875 433.8179931640625C604.4580078125 455.5690002441406 588.469970703125 474.8340148925781 566.7219848632812 476.87298583984375C544.9240112304688 478.9169921875 525.60498046875 462.8840026855469 523.5969848632812 441.0830078125C521.5880126953125 419.2820129394531 537.6530151367188 399.989013671875 559.4569702148438 398.0159912109375Z"/><g id="glowgroup">
+<circle cx="625" cy="390" r="72" fill="url(#glowM)"/>
+<ellipse cx="625" cy="390" rx="56" ry="6" fill="url(#streakM)" transform="rotate(-45 625 390)"/>
+<ellipse cx="625" cy="390" rx="32" ry="4.5" fill="url(#streakM)" transform="rotate(45 625 390)"/></g></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" class="wordmark" role="img" aria-label="ProspectMe" viewBox="0 0 1289 280"><g transform="translate(20,0)"><path transform="translate(0.00,210) scale(0.200000,-0.200000)" fill="#FFFFFF" d="M240 194V354H360Q394 354 419.0 367.5Q444 381 458.0 406.0Q472 431 472 465Q472 500 458.0 525.0Q444 550 419.0 563.0Q394 576 360 576H240V736H355Q449 736 517.5 704.5Q586 673 623.0 614.0Q660 555 660 473V457Q660 376 623.0 317.0Q586 258 517.5 226.0Q449 194 355 194ZM74 0V736H260V0Z"/><path transform="translate(133.20,210) scale(0.200000,-0.200000)" fill="#FFFFFF" d="M66 0V552H210V312H208Q208 428 256.5 494.0Q305 560 396 560H418V404H376Q315 404 281.5 371.0Q248 338 248 276V0Z"/><path transform="translate(216.00,210) scale(0.200000,-0.200000)" fill="#FFFFFF" d="M341 -20Q268 -20 211.0 2.0Q154 24 114.5 63.0Q75 102 54.5 153.0Q34 204 34 262V286Q34 346 55.5 398.0Q77 450 117.0 489.0Q157 528 214.0 550.0Q271 572 341 572Q412 572 468.5 550.0Q525 528 565.0 489.0Q605 450 626.5 398.0Q648 346 648 286V262Q648 204 627.5 153.0Q607 102 567.5 63.0Q528 24 471.0 2.0Q414 -20 341 -20ZM341 132Q383 132 410.5 150.0Q438 168 452.0 200.5Q466 233 466 274Q466 317 451.5 349.5Q437 382 409.0 401.0Q381 420 341 420Q301 420 273.0 401.0Q245 382 230.5 349.5Q216 317 216 274Q216 233 230.0 200.5Q244 168 272.0 150.0Q300 132 341 132Z"/><path transform="translate(350.40,210) scale(0.200000,-0.200000)" fill="#FFFFFF" d="M285 -18Q165 -18 96.0 31.5Q27 81 22 171H182Q186 146 213.0 128.0Q240 110 289 110Q324 110 349.5 120.5Q375 131 375 155Q375 176 355.0 189.5Q335 203 282 208L244 212Q138 223 88.0 270.0Q38 317 38 388Q38 449 68.0 488.5Q98 528 151.0 548.0Q204 568 272 568Q383 568 451.0 519.5Q519 471 523 380H363Q359 405 336.0 422.5Q313 440 270 440Q239 440 219.5 429.0Q200 418 200 398Q200 377 218.5 367.0Q237 357 278 352L316 348Q422 337 479.5 289.5Q537 242 537 165Q537 108 506.5 67.0Q476 26 419.5 4.0Q363 -18 285 -18Z"/><path transform="translate(460.80,210) scale(0.200000,-0.200000)" fill="#FFFFFF" d="M66 -200V552H210V314H194Q197 395 226.5 452.0Q256 509 307.0 538.5Q358 568 424 568Q481 568 527.0 547.5Q573 527 606.0 489.5Q639 452 656.5 401.0Q674 350 674 289V265Q674 204 658.0 152.5Q642 101 610.0 62.5Q578 24 531.5 3.0Q485 -18 425 -18Q361 -18 312.0 7.5Q263 33 234.5 84.5Q206 136 204 214L248 160V-200ZM370 132Q406 132 433.5 150.5Q461 169 476.5 202.0Q492 235 492 277Q492 320 476.5 351.5Q461 383 434.0 400.5Q407 418 370 418Q337 418 308.5 403.0Q280 388 262.0 359.0Q244 330 244 289V255Q244 216 263.0 188.5Q282 161 311.0 146.5Q340 132 370 132Z"/><path transform="translate(600.40,210) scale(0.200000,-0.200000)" fill="#FFFFFF" d="M325 -20Q255 -20 201.0 4.0Q147 28 110.0 69.0Q73 110 53.5 161.0Q34 212 34 266V286Q34 342 53.5 393.5Q73 445 109.5 485.0Q146 525 199.0 548.5Q252 572 319 572Q408 572 470.0 532.0Q532 492 565.0 426.5Q598 361 598 284V226H110V324H493L430 280Q430 327 417.5 359.5Q405 392 380.5 409.0Q356 426 319 426Q283 426 256.5 409.5Q230 393 216.0 359.5Q202 326 202 275Q202 229 215.0 195.5Q228 162 255.0 144.0Q282 126 325 126Q363 126 387.5 139.0Q412 152 422 174H588Q576 118 540.5 74.0Q505 30 450.5 5.0Q396 -20 325 -20Z"/><path transform="translate(724.00,210) scale(0.200000,-0.200000)" fill="#FFFFFF" d="M318 -20Q246 -20 193.0 3.5Q140 27 104.5 67.0Q69 107 51.5 158.0Q34 209 34 264V284Q34 342 52.5 394.0Q71 446 107.0 486.0Q143 526 196.0 549.0Q249 572 318 572Q394 572 452.0 542.0Q510 512 544.5 459.5Q579 407 583 339H405Q402 372 380.5 395.0Q359 418 318 418Q283 418 260.5 400.0Q238 382 227.0 350.0Q216 318 216 274Q216 233 225.5 201.0Q235 169 257.5 151.5Q280 134 318 134Q346 134 365.0 144.0Q384 154 395.0 172.5Q406 191 409 216H587Q583 146 547.5 93.0Q512 40 453.0 10.0Q394 -20 318 -20Z"/><path transform="translate(844.60,210) scale(0.200000,-0.200000)" fill="#FFFFFF" d="M329 -8Q239 -8 185.5 14.0Q132 36 108.0 87.0Q84 138 84 225L85 696H253L252 220Q252 183 271.5 163.5Q291 144 328 144H404V-8ZM4 420V552H404V420Z"/><path transform="translate(929.80,210) scale(0.200000,-0.200000)" fill="#FF6A00" d="M74 0V730H332L482 345H502L651 730H914V0H730V623L759 621L571 147H402L213 621L244 623V0Z"/><path transform="translate(1125.40,210) scale(0.200000,-0.200000)" fill="#FF6A00" d="M325 -20Q255 -20 201.0 4.0Q147 28 110.0 69.0Q73 110 53.5 161.0Q34 212 34 266V286Q34 342 53.5 393.5Q73 445 109.5 485.0Q146 525 199.0 548.5Q252 572 319 572Q408 572 470.0 532.0Q532 492 565.0 426.5Q598 361 598 284V226H110V324H493L430 280Q430 327 417.5 359.5Q405 392 380.5 409.0Q356 426 319 426Q283 426 256.5 409.5Q230 393 216.0 359.5Q202 326 202 275Q202 229 215.0 195.5Q228 162 255.0 144.0Q282 126 325 126Q363 126 387.5 139.0Q412 152 422 174H588Q576 118 540.5 74.0Q505 30 450.5 5.0Q396 -20 325 -20Z"/></g></svg>
+    </div>
+    <h1 class="tagline">BE SEEN<span class="o">.</span><span class="o">GET RECRUITED.</span></h1>
+    <p class="sub">The all-in-one platform that automates your athlete's recruiting social media presence.</p>
+    <div class="cta-row">
+      <a class="btn btn-solid" href="#waitlist">Join the Waitlist</a>
+      <a class="btn btn-ghost" href="#features">Learn More</a>
+    </div>
+  </div>
+</header>
+
+<div class="proof">
+  <div class="wrap">
+    <span><span class="dot">●</span>Built for basketball, soccer, lacrosse, volleyball &amp; more</span>
+    <span><span class="dot">●</span>Dedicated sports account — keep recruiting and personal separate</span>
+    <span><span class="dot">●</span>iOS app coming soon</span>
+  </div>
+</div>
+
+<section id="features">
+  <div class="wrap">
+    <span class="eyebrow">What ProspectMe does</span>
+    <h2>Your athlete plays. ProspectMe posts.</h2>
+    <div class="features">
+      <div class="card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#FF6A00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg>
+        <h3>Automate Your Recruiting Presence</h3>
+        <p>Set up once, post consistently. ProspectMe handles your schedule while you focus on the game.</p>
+      </div>
+      <div class="card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2563FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="3"/><polygon points="10.5 9 15.5 12 10.5 15" fill="#2563FF" stroke="none"/></svg>
+        <h3>Share Your Highlights</h3>
+        <p>Connect your YouTube playlist and let coaches find your best moments automatically.</p>
+      </div>
+      <div class="card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#FF6A00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20c1.5-4 4.5-6 8-6s6.5 2 8 6"/><circle cx="12" cy="8" r="4"/><path d="M19 3l1 2 2 1-2 1-1 2-1-2-2-1 2-1z" fill="#FF6A00" stroke="none"/></svg>
+        <h3>Get Noticed by Coaches</h3>
+        <p>Smart tagging puts your athlete in front of the right coaches at the right time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="founder">
+  <div class="wrap">
+    <span class="eyebrow">Our story</span>
+    <h2>Built by a sports parent, for sports parents.</h2>
+    <p>ProspectMe was born the night our daughter received her first college offer. We had been manually building recruiting websites, creating offer graphics, and posting highlights for months. <strong>There had to be a better way. So we built it.</strong></p>
+  </div>
+</section>
+
+<section class="waitlist" id="waitlist">
+  <div class="wrap">
+    <div class="panel">
+      <span class="corner c-tl" aria-hidden="true"></span><span class="corner c-br" aria-hidden="true"></span>
+      <h2>Be the first to know when ProspectMe launches.</h2>
+      <p class="subtext">Early access for families in the Class of 2027, 2028, and 2029 recruiting windows.</p>
+      <form action="https://formspree.io/f/mykqlnlb" method="POST" class="form-row">
+        <input type="email" name="email" placeholder="you@email.com" required aria-label="Email address">
+        <button class="btn btn-solid" type="submit">Join the Waitlist</button>
+      </form>
+      <p class="fine">iOS app coming soon. No spam, ever. Unsubscribe anytime.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <span>ProspectMe LLC © 2026</span>
+      <span class="social">
+        <a href="https://instagram.com/prospectme.app" rel="noopener">Instagram @prospectme.app</a>
+        <a href="https://tiktok.com/@prospectme.app" rel="noopener">TikTok @prospectme.app</a>
+        <a href="https://x.com/prospectmeapp" rel="noopener">X @prospectmeapp</a>
+      </span>
+      <span><a href="#privacy-notice">Privacy</a> · <span class="terms-note">Terms of Service — coming with app launch</span></span>
+    </div>
+    <details class="privacy" id="privacy-notice">
+      <summary>Website Privacy Notice</summary>
+      <p style="margin-top:12px"><em>Effective July 2026 — covers the ProspectMe website (prospectme.app) only. When the ProspectMe app launches, a full Privacy Policy will replace this notice for app users.</em></p>
+      <h4>Who we are</h4><p>ProspectMe LLC, a Connecticut company. Contact: <a href="mailto:rob@prospectme.app">rob@prospectme.app</a>.</p>
+      <h4>What we collect</h4><p>If you join our waitlist, we collect the email address you submit. That's it — we don't use tracking cookies or analytics that identify you on this site.</p>
+      <h4>How we use it</h4><p>To let you know when ProspectMe launches and to share early-access updates. We will never sell your email address or share it with third parties for their marketing.</p>
+      <h4>Who processes it</h4><p>Our waitlist form is operated by Formspree, which processes your submission on our behalf under its own <a href="https://formspree.io/legal/privacy-policy" rel="noopener">privacy policy</a>.</p>
+      <h4>How long we keep it</h4><p>Until launch communications conclude, or until you ask us to remove it — whichever comes first. Every email we send includes an unsubscribe option.</p>
+      <h4>Your choices</h4><p>To unsubscribe or have your email deleted, click unsubscribe in any email or write to <a href="mailto:rob@prospectme.app">rob@prospectme.app</a> and we'll remove it promptly.</p>
+      <h4>Children</h4><p>This website is intended for parents and adults. If you are under 13, please don't submit your email address.</p>
+      <h4>Changes</h4><p>If this notice changes, we'll update this page and its effective date.</p>
+    </details>
+  </div>
+</footer>
+
+</body>
+</html>
